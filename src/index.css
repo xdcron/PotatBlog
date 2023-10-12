@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .nav {
+    @apply flex items-center justify-between py-5 px-10 sticky top-0  bg-white z-10;
+  }
+
+  .post-container {
+    @apply relative max-w-[100%] h-[260px] rounded-md hover:translate-y-[-8px] transition-all duration-150 shadow-lg text-white;
+  }
+
+  .btn-log {
+    @apply flex w-full border-2 font-semibold p-3 mt-2  hover:bg-white hover:text-black transition-all duration-300 hover:border-black bg-black text-white justify-center rounded-lg shadow-lg;
+  }
+
+  .google {
+    @apply font-medium flex border-[2px] items-center gap-2 border-black rounded-full p-4 justify-center mt-4 hover:bg-white hover:text-black transition-all duration-300 hover:border-black bg-black text-white shadow-lg;
+  }
+
+  .btn-nav {
+    @apply border-2 px-4 py-2  hover:bg-white hover:text-black transition-all duration-300 hover:border-black bg-black text-white rounded-md font-medium shadow-lg;
+  }
+  .btn-del {
+    @apply px-3  sm:px-4 py-2 border-2 hover:bg-white hover:text-red-600 transition-all duration-300 hover:border-red-600 bg-red-600 text-white rounded-md font-medium shadow-lg;
+  }
+  .input-field {
+    @apply border-[2px] border-black text-[1rem] px-3 py-3 rounded-md placeholder:text-gray-800 focus:outline-none;
+  }
+
+  .image {
+    @apply w-full object-cover h-full rounded-md;
+  }
+}
