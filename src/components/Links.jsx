@@ -10,7 +10,6 @@ function Links() {
   const navigate = useNavigate();
   const [showMenu, setShowMenu] = useState(false);
   const { currUser, isAdmin, blogPosts } = useLoginSignUp();
-  console.log(currUser);
 
   const handleRedirect = (path) => {
     // Use navigate with replace option to replace the current path

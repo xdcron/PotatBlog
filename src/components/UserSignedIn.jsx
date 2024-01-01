@@ -5,9 +5,9 @@ import { auth } from "../firebase/firebase";
 
 function UserSignedIn() {
   const { currUser } = useLoginSignUp();
-  console.log(currUser);
-  const photoURL = currUser.photoURL;
-  const dislpayName = currUser.displayName.split(" ");
+
+  const photoURL = currUser?.photoURL;
+  const dislpayName = currUser?.displayName?.split(" ");
 
   async function LogOut() {
     try {
