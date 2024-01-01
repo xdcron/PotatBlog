@@ -52,12 +52,6 @@ function LoginSignUpProvider({ children }) {
     handleAdmin();
   }, [currUser?.uid]);
 
-  useEffect(() => {
-    onAuthStateChanged(auth, (currentUser) => {
-      setCurrUser(currentUser);
-    });
-  }, []);
-
   function signInWithGoogle() {
     signInWithPopup(auth, provider)
       .then(() => {
@@ -65,6 +59,10 @@ function LoginSignUpProvider({ children }) {
       })
       .catch((err) => console.error(err));
   }
+
+  onAuthStateChanged(auth, (currUser) => {
+    setCurrUser(currUser);
+  });
 
   function getCurrentFormattedDate() {
     const currentDate = new Date();
@@ -74,6 +72,7 @@ function LoginSignUpProvider({ children }) {
 
   const contextValues = {
     currUser,
+    setCurrUser,
     signInWithGoogle,
     isAdmin,
     blogPosts,

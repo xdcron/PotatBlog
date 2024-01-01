@@ -70,6 +70,8 @@ function Post() {
     setIsEdit(true);
   }
 
+  if (!postData) return;
+
   return (
     <>
       <Nav />
@@ -85,7 +87,7 @@ function Post() {
           ) : (
             <main className="relative flex flex-col gap-4 items-center  py-3 px-5 ">
               {isAdmin && (
-                <div className="w-full flex justify-center sm:justify-end">
+                <div className="w-full flex gap-2 justify-center sm:justify-end">
                   <Button
                     onClick={handleEdit}
                     className="btn-nav flex items-center gap-1 self-end sm:mr-4 text-[0.6rem] sm:text-[0.8rem] md:text-[1rem] "
@@ -104,22 +106,22 @@ function Post() {
                 <div className="flex flex-col items-center mb-1 w-full">
                   <h1
                     style={{ fontFamily: "Caveat" }}
-                    className="text-[3rem] sm:text-[4rem] text-center font-bold"
+                    className="text-[1.7rem] sm:text-[4rem] text-center font-bold"
                   >
-                    {postData?.title}
+                    {postData.title}
                   </h1>
                   <p className="text-center font-medium opacity-[0.8]">
-                    {postData?.headingTitle}
+                    {postData.headingTitle}
                   </p>
                   <time className=" text-[0.6rem] sm:text-[0.9rem] opacity-[0.8] ">
-                    {postData?.datePosted}
+                    {postData.datePosted}
                   </time>
                 </div>
                 <figure className="min-w-[300px] h-[300px] sm:w-[700px] sm:h-[350px] md:w-[900px] md:h-[450px] ">
                   <img
                     className="image shadow-lg"
-                    src={postData?.url}
-                    alt={postData?.title}
+                    src={postData.url}
+                    alt={postData.title}
                   />
                 </figure>
                 <article className="px-4 sm:px-10 md:px-36 py-7">

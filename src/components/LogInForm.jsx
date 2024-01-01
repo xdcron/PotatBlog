@@ -15,7 +15,7 @@ function LogInForm() {
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const { signInWithGoogle } = useLoginSignUp();
+  const { signInWithGoogle, setCurrUser } = useLoginSignUp();
 
   async function LoginUser(e) {
     e.preventDefault();
@@ -27,6 +27,9 @@ function LogInForm() {
         loginEmail,
         loginPassword
       );
+
+      setCurrUser(user);
+
       if (user) setIsLoading(true);
 
       setIsLoading(false);

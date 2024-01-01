@@ -18,7 +18,7 @@ function SignUpForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const { signInWithGoogle } = useLoginSignUp();
+  const { signInWithGoogle, setCurrUser } = useLoginSignUp();
 
   function handleBack(e) {
     e.preventDefault();
@@ -32,6 +32,8 @@ function SignUpForm() {
       const user = await createUserWithEmailAndPassword(auth, email, password);
       await updateProfile(user.user, { displayName: username });
       setIsLoading(false);
+      setCurrUser(user);
+      console.log(user);
       navigate("/");
     } catch (err) {
       console.error(err.message);

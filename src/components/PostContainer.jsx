@@ -51,6 +51,8 @@ function PostContainer() {
     setShowMore(shouldShowMore ? blogPosts.length : maxImageDisplay);
   }
 
+  if (isLoading) return <Loaderspinner />;
+
   return (
     <main className="py-8 px-6 md:px-12 ">
       <div className="p-3 flex justify-between">
@@ -68,54 +70,51 @@ function PostContainer() {
           />
         )}
       </div>
-      {isLoading ? (
-        <Loaderspinner />
-      ) : (
-        <div>
-          {blogPosts.length === 0 && isAdmin && (
-            <div className="w-full flex justify-center">
-              <Button
-                onClick={() => handleRedirect("/createpost")}
-                className="text-[0.8rem]  md:text-[1rem] btn-nav "
-              >
-                Add Your First Post
-              </Button>
-            </div>
-          )}
 
-          {blogPosts.length === 0 && !isAdmin && (
-            <p className="w-full text-center font-bold text-[1.1rem]">
-              Caleb hasn&apos;t posted yet.
-            </p>
-          )}
+      <div>
+        {blogPosts.length === 0 && isAdmin && (
+          <div className="w-full flex justify-center">
+            <Button
+              onClick={() => handleRedirect("/createpost")}
+              className="text-[0.8rem]  md:text-[1rem] btn-nav "
+            >
+              Add Your First Post
+            </Button>
+          </div>
+        )}
 
-          <section
-            className={`grid grid-cols-1 sm:grid-cols-2  ${
-              isSingleColumn ? "md:grid-cols-1" : "md:grid-cols-3"
-            } gap-x-4 gap-y-6`}
-          >
-            {blogPosts.map(
-              (post, i) =>
-                i < showMore && (
-                  <PostItem
-                    blogPosts={blogPosts}
-                    postData={post}
-                    isSingleColumn={isSingleColumn}
-                    firstPost={i === 0}
-                    key={i}
-                  />
-                )
-            )}
-          </section>
-          {blogPosts.length > maxImageDisplay && (
-            <div className="mt-5">
-              <Button className="btn-nav" onClick={handleShowMore}>
-                {shouldShowMore ? "See All" : "Show Less"}
-              </Button>
-            </div>
+        {blogPosts.length === 0 && !isAdmin && (
+          <p className="w-full text-center font-bold text-[1.1rem]">
+            Caleb hasn&apos;t posted yet.
+          </p>
+        )}
+
+        <section
+          className={`grid grid-cols-1 sm:grid-cols-2  ${
+            isSingleColumn ? "md:grid-cols-1" : "md:grid-cols-3"
+          } gap-x-4 gap-y-6`}
+        >
+          {blogPosts.map(
+            (post, i) =>
+              i < showMore && (
+                <PostItem
+                  blogPosts={blogPosts}
+                  postData={post}
+                  isSingleColumn={isSingleColumn}
+                  firstPost={i === 0}
+                  key={i}
+                />
+              )
           )}
-        </div>
-      )}
+        </section>
+        {blogPosts.length > maxImageDisplay && (
+          <div className="mt-5">
+            <Button className="btn-nav" onClick={handleShowMore}>
+              {shouldShowMore ? "See All" : "Show Less"}
+            </Button>
+          </div>
+        )}
+      </div>
     </main>
   );
 }
